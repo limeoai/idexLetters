@@ -1,4 +1,5 @@
 
+
 html, body {
   display: flex;
   flex-direction: column;
@@ -15,7 +16,7 @@ button {
   background-color: #4c4d4c;
   border: none;
   color: white;
-  padding: 20px 40px;
+  padding: 15px 30px;
   width: auto;
   min-height: 25px;
   text-align: center;
@@ -29,23 +30,23 @@ button {
 }
 
 button:hover {
-  background-color: #684d4d;
+  background-color: #553e52;
 }
 
-/* Wraps merkitys and ? buttons */
+
 .button-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
-/* Question mark buttons styled like merkitys */
+
 .question-btn {
   background-color: #4c4d4c;
   border: none;
   color: white;
-  padding: 20px 30px;
+  padding: 10px 20px;
   font-size: 25px;
   font-family: "Doulos SIL", "Charis SIL", "Noto Sans IPA", 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial;
   cursor: pointer;
@@ -54,10 +55,10 @@ button:hover {
 }
 
 .question-btn:hover {
-  background-color: #684d4d;
+  background-color: #318d33;
 }
 
-/* Floating info popup */
+
 #question-popup {
   position: fixed;
   bottom: 15%;
@@ -72,14 +73,13 @@ button:hover {
   text-align: center;
   font-size: 1em;
   max-width: 500px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
   z-index: 9999;
 }
 
-/* Visible state */
+
 #question-popup.visible {
   opacity: 1;
   pointer-events: auto;
@@ -115,17 +115,7 @@ p {
 }
 
 
-img {
-  display: block;
-  margin: 20px auto;
-  max-width: 150px;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-}
 
-img:hover {
-  opacity: 1;
-}
 
 #output {
   color: #414040;
@@ -153,7 +143,7 @@ img:hover {
 
 #output span:hover {
   transform: scale(1.2);
-  color: #034c10;
+  color: #f5f90e;
 }
 
 
@@ -180,13 +170,13 @@ img:hover {
 
 #output span {
   margin: 0 2px;
-  cursor: pointer;         /* 👈 makes cursor an arrow (hand pointer) */
+  cursor: pointer;         
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
 #output span:hover {
   transform: scale(1.2);
-  color: #034c10;
+  color: #318d33;
 }
 
 @media (max-width: 400px) {

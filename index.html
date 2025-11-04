@@ -26,7 +26,6 @@
     <div id="intro-message">Try typing words such as <b>hello</b>, <b>oak</b>, or <b>legitimate</b> multiple times — and listen to what they sound like.</div>
 
 
-<!-- hidden text box that appears when a question mark is clicked -->
     <div id="output"></div>
 
     <script>
@@ -321,7 +320,7 @@ document.addEventListener("keydown", function(event) {
   if (!isPlaying) processQueue();
 });
 
-// --- Question mark pop-up behavior ---
+
 (function() {
   const popup = document.getElementById("question-popup");
   const questionButtons = document.querySelectorAll(".question-btn");
