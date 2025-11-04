@@ -7,16 +7,26 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <!-- <h1>Merkitys</h1> -->
-    <div style="display: flex; justify-content: center;">
-      <button onclick="alert('meaning, significance, value; another literal meaning of the word is the act of marking')">m e r k i t y s</button>
-    </div>
-    <br>
-    <p> What should letters sound like? How is their meaning intertwined with sounds? </p>
+  <div class="button-container">
+    <button class="question-btn" id="left-q">?</button>
+    <button id="merkitys-btn" onclick="alert('meaning, significance, value; another literal meaning of the word is the act of marking')">m e r k i t y s</button>
+    <button class="question-btn" id="right-q">?</button>
+  </div>
+
+<!-- Floating message that appears when ? is clicked -->
+  <div id="question-popup">
+    What should letters sound like? How is their meaning intertwined with sounds?
+  </div>
+
+    <!-- <br>
+    <p> What should letters sound like? How is their meaning intertwined with sounds? </p> -->
     <br>
     <!-- <img src= "https://mac-fusion.com/wp-content/uploads/2014/02/onscreenvolume.jpg" alt = "volume" > -->
-    <br>
 
+    <div id="intro-message">Try typing words such as <b>hello</b>, <b>oak</b>, or <b>legitimate</b> multiple times — and listen to what they sound like.</div>
+
+
+<!-- hidden text box that appears when a question mark is clicked -->
     <div id="output"></div>
 
     <script>
@@ -271,9 +281,30 @@ function processQueue() {
     addDomElement("span", { text: event.key });
   }
 
-  // Wait 1.5s before processing the next key
-  setTimeout(processQueue, 500);
+  
+  setTimeout(processQueue, 400);
 }
+
+outputEl.addEventListener("click", e => {
+  if (e.target.tagName === "SPAN") {
+    const symbol = e.target.textContent;
+    for (const key in sounds) {
+      const match = sounds[key].find(s => s.ipa === symbol);
+      if (match) {
+        playSound(match.url);
+        break;
+      }
+    }
+  }
+});
+
+window.addEventListener("load", () => {
+  const intro = document.getElementById("intro-message");
+  setTimeout(() => {
+    if (intro) intro.remove();
+  }, 10500);
+});
+
 
 document.addEventListener("keydown", function(event) {
   if (event.key === "Backspace") {
@@ -289,6 +320,23 @@ document.addEventListener("keydown", function(event) {
 
   if (!isPlaying) processQueue();
 });
+
+// --- Question mark pop-up behavior ---
+(function() {
+  const popup = document.getElementById("question-popup");
+  const questionButtons = document.querySelectorAll(".question-btn");
+
+  function showPopup() {
+    popup.classList.add("visible");
+    clearTimeout(popup._fadeTimer);
+    popup._fadeTimer = setTimeout(() => {
+      popup.classList.remove("visible");
+    }, 5000); // fade out after 5s
+  }
+
+  questionButtons.forEach(btn => btn.addEventListener("click", showPopup));
+})();
+
 
 
 // document.addEventListener("keydown", async function(event) {
